@@ -6,3 +6,5 @@ dashboard/node_modules
 dashboard/package-lock.json
 marketing/node_modules
 marketing/package-lock.json
+dist
+.DS_Store
