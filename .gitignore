@@ -1,10 +1,4 @@
-auth/node_modules
-auth/package-lock.json
-container/node_modules
-container/package-lock.json
-dashboard/node_modules
-dashboard/package-lock.json
-marketing/node_modules
-marketing/package-lock.json
+node_modules
 dist
 .DS_Store
+package-lock.json
