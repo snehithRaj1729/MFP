@@ -1,25 +1,24 @@
 const {merge, mergeWithCustomize} = require('webpack-merge');
-const { ModuleFederationPlugin } = require('webpack').container;
-const commonConfig = require('./webpack.common');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const commonConfig = require('./webpack.common');
+const { ModuleFederationPlugin } = require('webpack').container;
 const packageJson = require('../package.json')
 
 const devConfig = {
     mode: 'development',
     devServer: {
-        port: 8081,
+        port: 8080,
         historyApiFallback: {
             index: 'index.html'
         }
     },
     plugins: [
         new ModuleFederationPlugin({
-            name:'marketing',
-            filename:'remoteEntry.js',
-            exposes:{
-                './MarketingApp':'./src/bootstrap',
+            name: 'container',
+            remotes:{
+                marketing:'marketing@http://localhost:8081/remoteEntry.js'
             },
-            shared: packageJson.dependencies,
+            shared:packageJson.dependencies,
         }),
         new HtmlWebpackPlugin({
             template: './public/index.html'
